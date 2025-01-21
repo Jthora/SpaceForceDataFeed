@@ -9,7 +9,7 @@ import logging
 
 # Configure logging
 logging.basicConfig(
-    level=logging.INFO,
+    level=logging.DEBUG,
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 )
 logger = logging.getLogger(__name__)
@@ -55,12 +55,15 @@ def ensure_category(category_name: str) -> Optional[int]:
     except Exception:
         return None
 
+# db.py
 def save_event(event_data):
     """Save an event to the database with deduplication"""
+    logger.debug(f"Saving event: {event_data}")
     with get_db_connection() as conn:
         with conn.cursor() as cur:
             category_id = ensure_category(event_data['category'])
             if not category_id:
+                logger.error("Failed to ensure category")
                 return None
             
             # Ensure date is timezone-aware
@@ -83,34 +86,44 @@ def save_event(event_data):
                 (content_hash,)
             )
             if cur.fetchone():
+                logger.debug("Event already exists")
                 return None  # Event already exists
             
-            cur.execute("""
-                INSERT INTO events (
-                    title, description, event_date, location, 
-                    category_id, content_hash
-                )
-                VALUES (%s, %s, %s, %s, %s, %s)
-                ON CONFLICT (content_hash) DO NOTHING
-                RETURNING id
-            """, (
-                event_data['title'],
-                event_data.get('description', ''),
-                event_date,
-                event_data.get('location', ''),
-                category_id,
-                content_hash
-            ))
-            conn.commit()
-            result = cur.fetchone()
-            return result['id'] if result else None
+            try:
+                cur.execute("""
+                    INSERT INTO events (
+                        title, description, event_date, location, 
+                        category_id, content_hash
+                    )
+                    VALUES (%s, %s, %s, %s, %s, %s)
+                    ON CONFLICT (content_hash) DO NOTHING
+                    RETURNING id
+                """, (
+                    event_data['title'],
+                    event_data.get('description', ''),
+                    event_date,
+                    event_data.get('location', ''),
+                    category_id,
+                    content_hash
+                ))
+                conn.commit()
+                result = cur.fetchone()
+                logger.debug(f"Event saved with ID: {result['id'] if result else 'None'}")
+                return result['id'] if result else None
+            except Exception as e:
+                logger.error(f"Error saving event: {str(e)}")
+                conn.rollback()
+                return None
 
+# filepath: /Users/jono/Documents/GitHub/SpaceForceDataFeed/utils/db.py
 def save_news(news_data):
     """Save a news item to the database with deduplication"""
+    logger.debug(f"Saving news: {news_data}")
     with get_db_connection() as conn:
         with conn.cursor() as cur:
             category_id = ensure_category(news_data['category'])
             if not category_id:
+                logger.error("Failed to ensure category")
                 return None
             
             # Ensure date is timezone-aware
@@ -155,8 +168,10 @@ def save_news(news_data):
                 ))
                 conn.commit()
                 result = cur.fetchone()
+                logger.debug(f"News saved with ID: {result['id'] if result else 'None'}")
                 return result['id'] if result else None
             except Exception as e:
+                logger.error(f"Error saving news: {str(e)}")
                 conn.rollback()
                 return None
 

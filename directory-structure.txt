@@ -40,18 +40,27 @@
 │   │   │   └── 95d84ce9317b66b6c5b0d710f5eb111fcf2420
 │   │   ├── 06
 │   │   │   └── 41e1a359d4b88036c7d229a05f8a7870ccc3c5
+│   │   ├── 15
+│   │   │   └── 208fc8171d01b7db33e4fb9c9454716db737b8
 │   │   ├── 19
 │   │   │   └── 4ea46b935e402bfa3f02f5a4c5e41598c6be6f
 │   │   ├── 1f
+│   │   │   ├── 025fc9564eac5b2ec95f6db0663eaff6b1de63
 │   │   │   └── b66f8101a64ccfe8d46b5c8fd297e2450791b0
 │   │   ├── 20
 │   │   │   └── f16159542e50c74167f9a385bc3c9f3f3a6079
+│   │   ├── 22
+│   │   │   └── ae280e3ed33449eaf03e4ba8066bb6f4567fb2
 │   │   ├── 3a
 │   │   │   └── 98d8fa1410f4875b17af9751d396dec822513a
 │   │   ├── 45
 │   │   │   └── 3c2b0ec7464c39f10b210bfb1ea25f57855fe9
+│   │   ├── 59
+│   │   │   └── 95c6538a9bb0a793cfdb30b81e93b99fb4b1bb
 │   │   ├── 5a
 │   │   │   └── b20ecce5ecadd63be75641e8b8bb1b9c373a2b
+│   │   ├── 5b
+│   │   │   └── 385a4781b91d669f5233b32d5734ccccc39c33
 │   │   ├── 63
 │   │   │   └── 50835d1d63c748917d16ba38ff71cf5f72584d
 │   │   ├── 6c
@@ -71,23 +80,35 @@
 │   │   │   └── 5fa7f751fc28228f17fe0e34c2ef7124664611
 │   │   ├── 97
 │   │   │   └── ff9ad949ceec0d027f9dd8765ed59ee9c8db25
+│   │   ├── 9a
+│   │   │   └── ee29cb486ffd1c632015dbf16f4b9c8656a3ed
 │   │   ├── 9d
 │   │   │   ├── 60b2798c5f794da121a74b064a3cb5fe1dd7a8
 │   │   │   └── 79d168fabac31568ef003bac4f714894d71d22
+│   │   ├── a6
+│   │   │   └── 88f13842b768ee382f7558ddf7b29bb9d38942
 │   │   ├── ae
 │   │   │   └── 2be7d81cea17d5f0f87e6a5acf3be91178cff6
+│   │   ├── b0
+│   │   │   └── 4bea7f4dd8d6af3828ca2228f5946fc9becdd9
 │   │   ├── b6
 │   │   │   └── 0f7862b8d0d2f966b00d0b979372bb72ef8431
 │   │   ├── b7
 │   │   │   └── 64beeb6b3769b6a1fa8f068548dc1fbe1cc50d
+│   │   ├── b8
+│   │   │   └── d3ff0317e283cb9705c894bbaa2b2453e2c35d
 │   │   ├── ca
 │   │   │   └── ccadf3f8515b2f32d3caecc6a95d337ad65b7c
+│   │   ├── ce
+│   │   │   └── b036ed55ef136309457b1b8115c5cf78212a15
 │   │   ├── e0
 │   │   │   └── a97deabf7600a2ef05536156ec716f8288b4a5
 │   │   ├── e4
 │   │   │   └── 1b434e22c0b1f83073daa6224eccfadf29213e
 │   │   ├── ed
 │   │   │   └── 41a65189b06506964895389ee9dc19dac9aac7
+│   │   ├── f0
+│   │   │   └── 45f9c2878cfbd413200aefd2c522f31ac0b155
 │   │   ├── f2
 │   │   │   └── 296a706ccc6798d7bc9719888308dcabe910d5
 │   │   ├── fe
@@ -107,10 +128,10 @@
 │       │       └── main
 │       └── tags
 ├── .gitignore
-├── DEPLOYMENT.md
 ├── LICENSE
 ├── Pasted--Latest-Updates-Apollo-12-and-Surveyor-3-2024-11-15-13-14-Space-Science-Put-on-your-red-blue-gla-1731677290038.txt
 ├── README.md
+├── USER_MANUAL.md
 ├── assets
 │   ├── default_featured_image.png
 │   └── style.css
@@ -129,6 +150,7 @@
 ├── replit_zip_error_log.txt
 ├── requirements.txt
 ├── schema.sql
+├── terminalLog.txt
 ├── utils
 │   ├── __pycache__
 │   │   ├── ai_briefing.cpython-311.pyc
@@ -167,4 +189,4 @@
 │   └── timezone_utils.py
 └── uv.lock
 
-49 directories, 119 files
+59 directories, 131 files
