@@ -14,6 +14,16 @@ from bs4 import BeautifulSoup
 from utils.db import save_news, save_event, get_news, get_events
 from utils.fallback_illustrations import get_fallback_image_url
 import concurrent.futures
+from dotenv import load_dotenv
+import os
+
+# Load environment variables from .env file
+load_dotenv()
+
+# Print environment variables to verify
+print(os.getenv('DATABASE_URL'))  # This should print the correct DATABASE_URL
+print(os.getenv('PGUSER'))        # This should print 'jono'
+print(os.getenv('PGPASSWORD'))    # This should print 'your_password'
 
 # Configure logging
 logging.basicConfig(
@@ -21,6 +31,11 @@ logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 )
 logger = logging.getLogger(__name__)
+
+# Log environment variables to verify
+logger.info(f"DATABASE_URL: {os.getenv('DATABASE_URL')}")
+logger.info(f"PGUSER: {os.getenv('PGUSER')}")
+logger.info(f"PGPASSWORD: {os.getenv('PGPASSWORD')}")
 
 def get_featured_image_url(entry: Dict[str, Any]) -> Optional[str]:
     """Extract featured image URL from feed entry metadata"""

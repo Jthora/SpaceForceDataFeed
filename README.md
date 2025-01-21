@@ -1,155 +1,119 @@
-# User Manual - Space Force Events Dashboard
+# Space Force Events Dashboard
 
 ## Table of Contents
 
-1. [Dashboard Overview](#dashboard-overview)
-2. [Getting Started](#getting-started)
-3. [Features and Functionality](#features-and-functionality)
-4. [Advanced Usage](#advanced-usage)
-5. [Tips and Tricks](#tips-and-tricks)
+- [Space Force Events Dashboard](#space-force-events-dashboard)
+  - [Table of Contents](#table-of-contents)
+  - [Overview](#overview)
+  - [Prerequisites](#prerequisites)
+  - [Setup Instructions](#setup-instructions)
+  - [Running the Application](#running-the-application)
+  - [Database Setup](#database-setup)
+  - [Environment Variables](#environment-variables)
 
-## Dashboard Overview
+## Overview
 
 The Space Force Events Dashboard is a comprehensive tool for monitoring and analyzing Space Force-related events and news. It provides real-time updates, interactive visualizations, and detailed analytics.
 
-### Key Components
+## Prerequisites
 
-- News Feed
-- Event Timeline
-- Statistical Analysis
-- Notification System
-- Search and Filtering Tools
+Before setting up the project, ensure you have the following installed:
 
-## Getting Started
+- Python 3.11 or higher
+- PostgreSQL
+- `psycopg2` library for PostgreSQL
+- `pip` (Python package installer)
 
-### Accessing the Dashboard
+## Setup Instructions
 
-1. Open the provided Replit URL
-2. The dashboard will load automatically
-3. Default view shows the latest events and news
+1. **Clone the repository:**
 
-### Basic Navigation
+    ```sh
+    git clone https://github.com/yourusername/SpaceForceDataFeed.git
+    cd SpaceForceDataFeed
+    ```
 
-- **Main Tabs**:
-  - 📊 Dashboard: Overview of events and news
-  - 📈 Detailed Analysis: In-depth analytics and visualizations
+2. **Create a virtual environment:**
 
-- **Sidebar Controls**:
-  - Date Range Selection
-  - Category Filters
-  - Notification Settings
-  - Auto-refresh Toggle
+    ```sh
+    python -m venv venv
+    source venv/bin/activate  # On Windows, use `venv\Scripts\activate`
+    ```
 
-## Features and Functionality
+3. **Install the required dependencies:**
 
-### News Feed
+    ```sh
+    pip install -r requirements.txt
+    ```
 
-1. **Viewing Updates**
-   - Latest events appear at the top
-   - New items are marked with 🔔
-   - Click "Read more" for full articles
+## Running the Application
 
-2. **Filtering Content**
-   - Use the search box for keyword filtering
-   - Select categories from the sidebar
-   - Set date ranges for historical data
+1. **Set up the environment variables:**
 
-### Event Timeline
+    Create a [.env](http://_vscodecontentref_/1) file in the root directory of the project with the following content:
 
-1. **Interactive Timeline**
-   - Hover over events for details
-   - Click and drag to zoom
-   - Use mouse wheel to scroll timeline
+    ```properties
+    DATABASE_URL=postgresql://jono:your_password@localhost:5432/spaceforce_datafeed
+    PGUSER=jono
+    PGPASSWORD=your_password
+    PGHOST=localhost
+    PGPORT=5432
+    PGDATABASE=spaceforce_datafeed
+    ```
 
-2. **Visualization Options**
-   - Color-coded by category
-   - Adjustable time range
-   - Detailed event information on hover
+2. **Run the application:**
 
-### Analytics
+    ```sh
+    streamlit run main.py
+    ```
 
-1. **Quick Stats**
-   - Total event count
-   - Category distribution
-   - Recent activity metrics
+## Database Setup
 
-2. **Detailed Analysis**
-   - Event frequency heatmap
-   - Category trends over time
-   - Statistical breakdowns
+1. **Create the PostgreSQL database:**
 
-### Notification System
+    ```sh
+    createdb spaceforce_datafeed
+    ```
 
-1. **Setting Up Notifications**
-   - Enable/disable in sidebar
-   - Configure alert preferences
-   - Desktop notifications for new events
+2. **Create the required tables:**
 
-2. **Managing Alerts**
-   - Clear notifications
-   - Customize refresh intervals
-   - Set category-specific alerts
+    Connect to the database using `psql` and run the SQL commands in the [schema.sql](http://_vscodecontentref_/2) file:
 
-## Advanced Usage
+    ```sh
+    psql $DATABASE_URL -f schema.sql
+    ```
 
-### Custom Filters
+    Alternatively, you can run the commands directly in the `psql` shell:
 
-1. **Combined Filtering**
-   - Use multiple filters simultaneously
-   - Combine search with date ranges
-   - Filter by multiple categories
+    ```sql
+    CREATE TABLE categories (
+        id SERIAL PRIMARY KEY,
+        name VARCHAR(255) NOT NULL UNIQUE
+    );
 
-2. **Advanced Search**
-   - Use keywords for specific content
-   - Search in titles and descriptions
-   - Filter by date and category
+    CREATE TABLE news (
+        id SERIAL PRIMARY KEY,
+        title VARCHAR(255) NOT NULL,
+        description TEXT,
+        publication_date TIMESTAMP WITH TIME ZONE NOT NULL,
+        source VARCHAR(255),
+        link VARCHAR(255),
+        category_id INTEGER REFERENCES categories(id),
+        content_hash VARCHAR(255) UNIQUE,
+        image_url VARCHAR(255),
+        created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+        updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+    );
+    ```
 
-### Data Analysis
+## Environment Variables
 
-1. **Timeline Analysis**
-   - Identify patterns and trends
-   - Compare event frequencies
-   - Analyze category distributions
+Ensure the following environment variables are set in your [.env](http://_vscodecontentref_/3) file:
 
-2. **Statistical Tools**
-   - View detailed metrics
-   - Export data for analysis
-   - Track temporal patterns
-
-## Tips and Tricks
-
-### Optimization
-
-1. **Performance**
-   - Use specific date ranges for faster loading
-   - Clear browser cache regularly
-   - Optimize filter combinations
-
-2. **User Experience**
-   - Customize view layouts
-   - Use keyboard shortcuts
-   - Save frequent searches
-
-### Troubleshooting
-
-1. **Common Issues**
-   - Refresh page if visualizations don't load
-   - Check notification permissions
-   - Verify internet connection
-
-2. **Best Practices**
-   - Regular page refreshes
-   - Clear filters when starting new searches
-   - Use auto-refresh for real-time updates
-
-## Keyboard Shortcuts
-
-- `Ctrl + F`: Open search
-- `Esc`: Clear current selection
-- `R`: Refresh data
-
-## Additional Resources
-
-- Project Documentation
-- API References
-- Support Contacts
+```properties
+DATABASE_URL=postgresql://jono:your_password@localhost:5432/spaceforce_datafeed
+PGUSER=jono
+PGPASSWORD=your_password
+PGHOST=localhost
+PGPORT=5432
+PGDATABASE=spaceforce_datafeed

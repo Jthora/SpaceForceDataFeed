@@ -5,9 +5,19 @@ from datetime import datetime, timezone
 import hashlib
 import json
 from typing import Optional, Dict, Any
+import logging
+
+# Configure logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+)
+logger = logging.getLogger(__name__)
 
 def get_db_connection():
     """Create a database connection"""
+    print(os.getenv('DATABASE_URL'))  # Add this line to debug
+    logger.info(f"DATABASE_URL: {os.getenv('DATABASE_URL')}")
     return psycopg2.connect(
         os.environ['DATABASE_URL'],
         cursor_factory=RealDictCursor

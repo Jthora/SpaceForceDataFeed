@@ -27,6 +27,13 @@ import json
 import html
 from utils.browser_storage import load_dashboard_settings, save_dashboard_settings
 from utils.performance_monitor import monitor_performance, optimize_cache
+from dotenv import load_dotenv
+import os
+
+# Load environment variables from .env file
+load_dotenv()
+print(os.getenv('DATABASE_URL'))  # This should print the correct DATABASE_URL
+print(os.getenv('PGUSER'))        # This should print 'jono'
 
 # Configure logging
 logging.basicConfig(
@@ -34,6 +41,11 @@ logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 )
 logger = logging.getLogger(__name__)
+
+# Log environment variables to verify
+logger.info(f"DATABASE_URL: {os.getenv('DATABASE_URL')}")
+logger.info(f"PGUSER: {os.getenv('PGUSER')}")
+logger.info(f"PGPASSWORD: {os.getenv('PGPASSWORD')}")
 
 def calculate_timeline_height(categories):
     """Calculate timeline height based on number of categories"""

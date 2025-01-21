@@ -1,0 +1,170 @@
+.
+├── .DS_Store
+├── .env
+├── .git
+│   ├── COMMIT_EDITMSG
+│   ├── FETCH_HEAD
+│   ├── HEAD
+│   ├── branches
+│   ├── config
+│   ├── description
+│   ├── hooks
+│   │   ├── applypatch-msg.sample
+│   │   ├── commit-msg.sample
+│   │   ├── fsmonitor-watchman.sample
+│   │   ├── post-update.sample
+│   │   ├── pre-applypatch.sample
+│   │   ├── pre-commit.sample
+│   │   ├── pre-merge-commit.sample
+│   │   ├── pre-push.sample
+│   │   ├── pre-rebase.sample
+│   │   ├── pre-receive.sample
+│   │   ├── prepare-commit-msg.sample
+│   │   ├── push-to-checkout.sample
+│   │   ├── sendemail-validate.sample
+│   │   └── update.sample
+│   ├── index
+│   ├── info
+│   │   └── exclude
+│   ├── logs
+│   │   ├── HEAD
+│   │   └── refs
+│   │       ├── heads
+│   │       │   └── main
+│   │       └── remotes
+│   │           └── origin
+│   │               ├── HEAD
+│   │               └── main
+│   ├── objects
+│   │   ├── 00
+│   │   │   └── 95d84ce9317b66b6c5b0d710f5eb111fcf2420
+│   │   ├── 06
+│   │   │   └── 41e1a359d4b88036c7d229a05f8a7870ccc3c5
+│   │   ├── 19
+│   │   │   └── 4ea46b935e402bfa3f02f5a4c5e41598c6be6f
+│   │   ├── 1f
+│   │   │   └── b66f8101a64ccfe8d46b5c8fd297e2450791b0
+│   │   ├── 20
+│   │   │   └── f16159542e50c74167f9a385bc3c9f3f3a6079
+│   │   ├── 3a
+│   │   │   └── 98d8fa1410f4875b17af9751d396dec822513a
+│   │   ├── 45
+│   │   │   └── 3c2b0ec7464c39f10b210bfb1ea25f57855fe9
+│   │   ├── 5a
+│   │   │   └── b20ecce5ecadd63be75641e8b8bb1b9c373a2b
+│   │   ├── 63
+│   │   │   └── 50835d1d63c748917d16ba38ff71cf5f72584d
+│   │   ├── 6c
+│   │   │   └── 6cde36ec25959a8ac6038d1401eb3075a7f9d8
+│   │   ├── 6f
+│   │   │   └── bab5af312a25f02312bdc3babcc1a5ad2f2bd5
+│   │   ├── 71
+│   │   │   └── f9fc13acdbbee4657299aeef11dd3c908546c4
+│   │   ├── 78
+│   │   │   └── e4971ba864e4431fc3773666c00a10d7e013be
+│   │   ├── 80
+│   │   │   └── 4bdaacf7f49a19668e09ce4fa42dbcd1009e54
+│   │   ├── 91
+│   │   │   ├── 022306461d1e190825736f3ce7ad027a0566b6
+│   │   │   └── a33e67ca9a4ef07cfdfc5ca5c54bc161250398
+│   │   ├── 95
+│   │   │   └── 5fa7f751fc28228f17fe0e34c2ef7124664611
+│   │   ├── 97
+│   │   │   └── ff9ad949ceec0d027f9dd8765ed59ee9c8db25
+│   │   ├── 9d
+│   │   │   ├── 60b2798c5f794da121a74b064a3cb5fe1dd7a8
+│   │   │   └── 79d168fabac31568ef003bac4f714894d71d22
+│   │   ├── ae
+│   │   │   └── 2be7d81cea17d5f0f87e6a5acf3be91178cff6
+│   │   ├── b6
+│   │   │   └── 0f7862b8d0d2f966b00d0b979372bb72ef8431
+│   │   ├── b7
+│   │   │   └── 64beeb6b3769b6a1fa8f068548dc1fbe1cc50d
+│   │   ├── ca
+│   │   │   └── ccadf3f8515b2f32d3caecc6a95d337ad65b7c
+│   │   ├── e0
+│   │   │   └── a97deabf7600a2ef05536156ec716f8288b4a5
+│   │   ├── e4
+│   │   │   └── 1b434e22c0b1f83073daa6224eccfadf29213e
+│   │   ├── ed
+│   │   │   └── 41a65189b06506964895389ee9dc19dac9aac7
+│   │   ├── f2
+│   │   │   └── 296a706ccc6798d7bc9719888308dcabe910d5
+│   │   ├── fe
+│   │   │   └── 4b4ddb6d6f3dc5813885ebe6ab7824c0e31bd7
+│   │   ├── info
+│   │   └── pack
+│   │       ├── pack-ace15e8e21fbec7514895bcfaef20b51cc0912a3.idx
+│   │       ├── pack-ace15e8e21fbec7514895bcfaef20b51cc0912a3.pack
+│   │       └── pack-ace15e8e21fbec7514895bcfaef20b51cc0912a3.rev
+│   ├── packed-refs
+│   └── refs
+│       ├── heads
+│       │   └── main
+│       ├── remotes
+│       │   └── origin
+│       │       ├── HEAD
+│       │       └── main
+│       └── tags
+├── .gitignore
+├── DEPLOYMENT.md
+├── LICENSE
+├── Pasted--Latest-Updates-Apollo-12-and-Surveyor-3-2024-11-15-13-14-Space-Science-Put-on-your-red-blue-gla-1731677290038.txt
+├── README.md
+├── assets
+│   ├── default_featured_image.png
+│   └── style.css
+├── directory-structure.txt
+├── generated-icon.png
+├── logfile
+├── main.py
+├── pyproject.toml
+├── repl_nix_spaceforcedatafeed.egg-info
+│   ├── PKG-INFO
+│   ├── SOURCES.txt
+│   ├── dependency_links.txt
+│   ├── requires.txt
+│   └── top_level.txt
+├── replit.nix
+├── replit_zip_error_log.txt
+├── requirements.txt
+├── schema.sql
+├── utils
+│   ├── __pycache__
+│   │   ├── ai_briefing.cpython-311.pyc
+│   │   ├── ai_briefing.cpython-313.pyc
+│   │   ├── browser_storage.cpython-311.pyc
+│   │   ├── browser_storage.cpython-313.pyc
+│   │   ├── category_manager.cpython-311.pyc
+│   │   ├── category_manager.cpython-313.pyc
+│   │   ├── data_fetcher.cpython-311.pyc
+│   │   ├── data_fetcher.cpython-313.pyc
+│   │   ├── data_processor.cpython-311.pyc
+│   │   ├── data_processor.cpython-313.pyc
+│   │   ├── db.cpython-311.pyc
+│   │   ├── db.cpython-313.pyc
+│   │   ├── event_analyzer.cpython-311.pyc
+│   │   ├── event_analyzer.cpython-313.pyc
+│   │   ├── fallback_illustrations.cpython-311.pyc
+│   │   ├── fallback_illustrations.cpython-313.pyc
+│   │   ├── notification_manager.cpython-311.pyc
+│   │   ├── notification_manager.cpython-313.pyc
+│   │   ├── performance_monitor.cpython-311.pyc
+│   │   ├── performance_monitor.cpython-313.pyc
+│   │   ├── timezone_converter.cpython-311.pyc
+│   │   ├── timezone_utils.cpython-311.pyc
+│   │   └── timezone_utils.cpython-313.pyc
+│   ├── ai_briefing.py
+│   ├── browser_storage.py
+│   ├── category_manager.py
+│   ├── data_fetcher.py
+│   ├── data_processor.py
+│   ├── db.py
+│   ├── event_analyzer.py
+│   ├── fallback_illustrations.py
+│   ├── notification_manager.py
+│   ├── performance_monitor.py
+│   └── timezone_utils.py
+└── uv.lock
+
+49 directories, 119 files
