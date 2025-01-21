@@ -1,0 +1,260 @@
+/* Base styles */
+@import url('https://fonts.googleapis.com/css2?family=Aldrich&family=Iceberg&display=swap');
+
+.stApp {
+    background-image: linear-gradient(to bottom, #0e1117, #1a1f24);
+    height: 100vh;
+    max-width: 1080px;
+    margin: 0 auto;
+}
+
+/* Remove ALL top margins and padding */
+.stApp > header {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+}
+
+.main > .block-container {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+}
+
+/* Override any Streamlit default padding */
+.st-emotion-cache-18ni7ap {
+    padding-top: 0 !important;
+}
+
+.st-emotion-cache-z5fcl4 {
+    padding-top: 0 !important;
+}
+
+/* Additional Streamlit overrides */
+div[data-testid="stToolbar"] {
+    display: none !important;
+}
+
+div[data-testid="stDecoration"] {
+    display: none !important;
+}
+
+div[data-testid="stHeader"] {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+}
+
+/* Force remove any top spacing */
+.element-container:first-child {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+.stMarkdown:first-child {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+}
+
+/* Font Styles */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Aldrich', sans-serif !important;
+}
+
+/* Apply Iceberg font to chart text */
+.js-plotly-plot .plotly text {
+    font-family: 'Iceberg', cursive !important;
+    font-size: 0.8rem !important;
+}
+
+/* Command center styling */
+.command-center {
+    height: calc(100vh - 80px);
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    padding: 0rem;
+}
+
+/* Redesigned Event Card */
+.event-card {
+    background-color: rgba(26, 31, 36, 0.8);
+    border-radius: 5px;
+    padding: 1.5rem;
+    margin: 0.75rem 0;
+    border: 1px solid rgba(0, 242, 255, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+}
+
+.event-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #00f2ff, transparent);
+    animation: cyber-scan 3s linear infinite;
+}
+
+.event-card.new-event {
+    border: 1px solid rgba(0, 242, 255, 0.5);
+    box-shadow: 0 0 15px rgba(0, 242, 255, 0.2);
+    animation: pulse 2s infinite;
+}
+
+/* Card Header Section */
+.event-card-header {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.event-card-header h3 {
+    color: #00f2ff;
+    font-size: 1.2rem;
+    margin: 0;
+    line-height: 1.4;
+    text-shadow: 0 0 5px rgba(0, 242, 255, 0.5);
+}
+
+.event-card-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Card Content Section */
+.event-card-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    align-items: start;
+}
+
+.event-card-content.has-image {
+    grid-template-columns: minmax(0, 1fr) 120px;
+}
+
+.event-card-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    width: 100%;
+}
+
+.event-card-text p {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.9);
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.event-card-image {
+    width: 120px;
+    height: 90px;
+    overflow: hidden;
+    border-radius: 5px;
+    border: 1px solid rgba(0, 242, 255, 0.3);
+}
+
+.event-card .event-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.event-card-link {
+    margin-top: 0.5rem;
+}
+
+.event-card-link a {
+    color: #00f2ff;
+    text-decoration: none;
+    font-size: 0.9rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    transition: all 0.3s ease;
+}
+
+.event-card-link a:hover {
+    text-shadow: 0 0 8px rgba(0, 242, 255, 0.8);
+}
+
+.category-pill {
+    background-color: rgba(0, 242, 255, 0.1);
+    color: #00f2ff;
+    padding: 0.2rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    display: inline-flex;
+    align-items: center;
+    height: 24px;
+    border: 1px solid rgba(0, 242, 255, 0.3);
+}
+
+@keyframes cyber-scan {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 15px rgba(0, 242, 255, 0.2); }
+    50% { box-shadow: 0 0 25px rgba(0, 242, 255, 0.4); }
+    100% { box-shadow: 0 0 15px rgba(0, 242, 255, 0.2); }
+}
+
+/* Auto-scroll styling */
+.auto-scroll {
+    scroll-behavior: smooth;
+    transition: all 0.5s ease;
+}
+
+/* Statistics section */
+.stats-container {
+    background: rgba(26, 31, 36, 0.9);
+    border-radius: 5px;
+    padding: 1rem;
+    margin: 1rem 0;
+    border: 1px solid rgba(0, 242, 255, 0.2);
+}
+
+.stats-metric {
+    text-align: center;
+    padding: 0.5rem;
+    border-radius: 3px;
+    background: rgba(0, 242, 255, 0.05);
+    margin: 0.5rem 0;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(26, 31, 36, 0.8);
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(0, 242, 255, 0.3);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 242, 255, 0.5);
+}
+
+/* Custom notification styling */
+.stAlert {
+    background: rgba(26, 31, 36, 0.9) !important;
+    border: 1px solid rgba(0, 242, 255, 0.3) !important;
+    color: #00f2ff !important;
+}
