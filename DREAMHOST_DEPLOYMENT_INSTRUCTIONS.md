@@ -97,7 +97,7 @@ This guide provides detailed steps to deploy a Python project on DreamHost, ensu
    ```
 2. Clone your project repository:
    ```bash
-   git clone https://github.com/yourusername/yourproject.git .
+   git clone https://github.com/Jthora/SpaceForceDataFeed.git
    ```
 
 ### Step 2: Set Up a Virtual Environment
