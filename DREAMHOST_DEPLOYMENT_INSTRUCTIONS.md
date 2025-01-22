@@ -267,3 +267,11 @@ echo "PGHOST=localhost" >> .env
 echo "PGPORT=5432" >> .env
 echo "PGDATABASE=spaceforce_datafeed" >> .env
 ```
+
+---
+
+### 7. Run Streamlit App
+
+```bash
+streamlit run main.py --server.port 8501
+```
