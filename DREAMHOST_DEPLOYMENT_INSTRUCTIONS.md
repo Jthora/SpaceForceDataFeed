@@ -229,7 +229,10 @@ This guide provides detailed steps to deploy a Python project on DreamHost, ensu
       ```bash
       \q
       ```
-   6. To execute your schema (from within the spaceforcedatafeed directory):
+   6. To execute your schema:
+  
+      *navigate to the spaceforcedatafeed directory*
+
       ```bash
       psql -d spaceforce_datafeed -f schema.sql
       ```
