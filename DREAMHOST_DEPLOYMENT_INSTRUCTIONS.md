@@ -152,166 +152,109 @@ This guide provides detailed steps to deploy a Python project on DreamHost, ensu
       ```
 4. Add PostgreSQL to Your PATH
    1. Add the PostgreSQL binaries to your PATH:
-   2. ```bash
+      ```bash
       echo 'export PATH=$HOME/opt/postgresql/bin:$PATH' >> ~/.bash_profile
       source ~/.bash_profile
       ```
-   3. Verify the PostgreSQL version:
-   4. ```bash
+   2. Verify the PostgreSQL version:
+      ```bash
       psql --version
       ```
+   3. If `psql` is not found, ensure the PostgreSQL binaries are in your `PATH`:
+      ```bash
+      export PATH=$HOME/opt/postgresql/bin:$PATH
+      ```
+
 5. Initialize the Database
    1. Create a data directory for PostgreSQL:
-   2. ```bash
+      ```bash
       mkdir -p $HOME/opt/postgresql/data
       ```
-   3. Initialize the database cluster:
+   2. Initialize the database cluster:
       ```bash
       initdb -D $HOME/opt/postgresql/data
       ```
+
 6. Start the PostgreSQL Server
-   1. Start the server:
+   1. Ensure the PostgreSQL binaries are in your `PATH`:
       ```bash
-      pg_ctl -D $HOME/opt/postgresql/data -l $HOME/opt/postgresql/logfile start
+      export PATH=$HOME/opt/postgresql/bin:$PATH
       ```
-   2. Verify the server is running:
+   2. Check if the server is already running:
+      ```bash
+      pg_ctl status -D $HOME/opt/postgresql/data || pg_ctl -D $HOME/opt/postgresql/data -l $HOME/opt/postgresql/logfile start
+      ```
+   3. Verify the server is running:
       ```bash
       pg_ctl status -D $HOME/opt/postgresql/data
       ```
+   4. Ensure the server is accepting connections:
+      ```bash
+      psql -d postgres -c "SELECT 1;" || (export PATH=$HOME/opt/postgresql/bin:$PATH && pg_ctl -D $HOME/opt/postgresql/data -l $HOME/opt/postgresql/logfile start)
+      ```
+   5. If the server fails to start, examine the log output:
+      ```bash
+      cat $HOME/opt/postgresql/logfile
+      ```
+
 7. Create and Use a Database
-   1. Create a new database:
+   1. Create a new PostgreSQL user:
+      ```bash
+      createuser jono
+      ```
+   2. Set the password for the new user:
+      ```bash
+      psql -d postgres -c "ALTER USER jono WITH PASSWORD 'your_password01a';"
+      ```
+   3. Create a new database:
       ```bash
       createdb spaceforce_datafeed
       ```
-   2. Connect to the database:
+   4. Grant all privileges on the database to the new user:
+      ```bash
+      psql -d postgres -c "GRANT ALL PRIVILEGES ON DATABASE spaceforce_datafeed TO jono;"
+      ```
+   5. Connect to the database:
       ```bash
       psql -d spaceforce_datafeed
       ```
-   3. To execute your schema:
+
+      use \q to exit out of the database
+      ```bash
+      \q
+      ```
+   6. To execute your schema (from within the spaceforcedatafeed directory):
       ```bash
       psql -d spaceforce_datafeed -f schema.sql
       ```
-8. Stop the PostgreSQL Server
-   1. To stop the server when you’re done:
+
+
+   2. To stop the server:
       ```bash
       pg_ctl -D $HOME/opt/postgresql/data stop
       ```
-
-### Step 2: Initialize the Schema
-1. Connect to the database using `psql`:
-   ```bash
-   psql -h hostname -U username -d database_name
-   ```
-2. Import the schema:
-   ```bash
-   psql -h hostname -U username -d database_name -f schema.sql
-   ```
-
----
-
-## 6. Configuring the Application
-
-### Step 1: Create a `passenger_wsgi.py` File
-1. Add this file to your project root:
-   ```python
-   import sys
-   sys.path.insert(0, "/home/username/yourdomain.com")
-
-   from main import app as application  # Update to match your app’s structure
-   ```
-
-### Step 2: Set Environment Variables
-1. Create a `.env` file in your project root:
-   ```properties
-   DATABASE_URL=postgresql://username:password@hostname:5432/database_name
-   SECRET_KEY=your_secret_key
-   DEBUG=False
-   ```
-
-2. Use `python-dotenv` to load these variables in your app:
-   ```python
-   from dotenv import load_dotenv
-   load_dotenv()
-   ```
-
-### Step 3: Adjust Permissions
-1. Ensure files are readable by Passenger:
-   ```bash
-   chmod -R 755 /home/username/yourdomain.com
-   ```
+   3. To restart the server:
+      ```bash
+      pg_ctl -D $HOME/opt/postgresql/data restart
+      ```
+   4. To check the status of the server:
+      ```bash
+      pg_ctl status -D $HOME/opt/postgresql/data
+      ```
+   5. To view the server logs:
+      ```bash
+      cat $HOME/opt/postgresql/logfile
+      ```
 
 ---
 
-## 7. Testing and Troubleshooting
+### 6. Setup the .env file
 
-### Step 1: Restart Passenger
-1. Restart Passenger to apply changes:
-   ```bash
-   touch tmp/restart.txt
-   ```
-
-### Step 2: Monitor Logs
-1. Check Passenger logs for issues:
-   ```bash
-   tail -f logs/error.log
-   ```
-
-### Step 3: Debugging
-1. If the app doesn’t load, verify:
-   - Paths in `passenger_wsgi.py`.
-   - Database credentials in `.env`.
-   - Python dependencies are correctly installed.
-
----
-
-## 8. Handling Advanced Requirements
-
-### Using `pip-compile`
-1. Install `pip-tools`:
-   ```bash
-   pip install pip-tools
-   ```
-
-2. Compile dependencies:
-   ```bash
-   pip-compile pyproject.toml
-   ```
-
-3. Install the compiled requirements:
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-### Using `Poetry`
-1. Install Poetry:
-   ```bash
-   pip install poetry
-   ```
-
-2. Install dependencies:
-   ```bash
-   poetry install
-   ```
-
-3. Activate the virtual environment:
-   ```bash
-   poetry shell
-   ```
-
----
-
-## 9. Final Steps
-
-### Automating Deployments
-1. Automate updates with Git:
-   ```bash
-   git pull origin main
-   touch tmp/restart.txt
-   ```
-
-### Static File Handling
-1. Configure a static directory for your files and update your app to serve them.
-
----
-
-These instructions should help you deploy your Python project on DreamHost successfully, ensuring alignment with all requirements from the README. If further clarification is needed, consult DreamHost's support or documentation.
+```bash
+echo "DATABASE_URL=postgresql://jono:your_password01a@localhost:5432/spaceforce_datafeed" > .env
+echo "PGUSER=jono" >> .env
+echo "PGPASSWORD=your_password01a" >> .env
+echo "PGHOST=localhost" >> .env
+echo "PGPORT=5432" >> .env
+echo "PGDATABASE=spaceforce_datafeed" >> .env
+```

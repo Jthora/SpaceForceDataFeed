@@ -1,0 +1,5 @@
+[server]
+enableWebsocketCompression = false
+enableXsrfProtection = true
+allowWebsocketOrigin = ["spaceforcedatafeed.starcom.app"]
+enableCORS = false
