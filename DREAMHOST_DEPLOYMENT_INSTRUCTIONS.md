@@ -102,14 +102,18 @@ This guide provides detailed steps to deploy a Python project on DreamHost, ensu
 
 ### Step 2: Set Up a Virtual Environment
 1. Create and activate the virtual environment:
+   
    *navigate to opt/ folder*
+   
    ```bash
    python3 -m venv venv
    source venv/bin/activate
    ```
 
 3. Upgrade `pip` and install dependencies:
+
    *navigate to the git repo directory*
+   
    ```bash
    pip install --upgrade pip
    pip install pip-tools
